@@ -1,0 +1,67 @@
+﻿@model EventEaseBookingApp.Models.Venue
+
+@{
+    ViewData["Title"] = "Create Venue";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-sm mt-4">
+            <div class="card-body">
+                <h1 class="card-title mb-3">Create Venue</h1>
+                <hr />
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="VenueName"></label>
+                        <input asp-for="VenueName" class="form-control" placeholder="Enter venue name" />
+                        <span asp-validation-for="VenueName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Location"></label>
+                        <input asp-for="Location" class="form-control" placeholder="Enter location" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label asp-for="Capacity"></label>
+                        <input asp-for="Capacity" type="number" min="1" class="form-control" placeholder="Enter capacity" />
+                        <span asp-validation-for="Capacity" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Venue Image URL</label>
+                        <input asp-for="ImageUrl" class="form-control" placeholder="Enter image URL here" oninput="previewImage(this.value)" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+
+                    <div class="mt-3 text-center">
+                        <div class="border rounded p-1 d-inline-block">
+                            <img id="preview" width="200" height="120" style="object-fit:cover; border-radius:8px;" />
+                        </div>
+                    </div>
+
+                    <script>
+                        function previewImage(url) {
+                            document.getElementById("preview").src = url;
+                        }
+                    </script>
+
+                    <div class="form-group mt-4 d-flex justify-content-between">
+                        <input type="submit" value="Create" class="btn btn-primary btn-lg" />
+                        <a asp-action="Index" class="btn btn-outline-secondary btn-lg">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
