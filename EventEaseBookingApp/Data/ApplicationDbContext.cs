@@ -13,5 +13,6 @@ namespace EventEaseBookingApp.Data
         public DbSet<Venue> Venues { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
     }
 }

@@ -5,6 +5,56 @@
 }
 
 <h1 class="mb-4">Bookings</h1>
+<form method="get" class="row g-3 mb-4">
+
+    <div class="col-md-3">
+        <input type="text"
+               name="search"
+               class="form-control"
+               placeholder="Search booking/event/venue" />
+    </div>
+
+    <div class="col-md-2">
+        <select name="eventTypeId" class="form-select">
+            <option value="">All Event Types</option>
+
+            @foreach (var item in ViewBag.EventTypes)
+            {
+                <option value="@item.Value">
+                    @item.Text
+                </option>
+            }
+        </select>
+    </div>
+
+    <div class="col-md-2">
+        <input type="date"
+               name="startDate"
+               class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <input type="date"
+               name="endDate"
+               class="form-control" />
+    </div>
+
+    <div class="col-md-2">
+        <select name="venueAvailable" class="form-select">
+            <option value="">All Venues</option>
+            <option value="true">Available</option>
+            <option value="false">Unavailable</option>
+        </select>
+    </div>
+
+    <div class="col-md-1">
+        <button type="submit"
+                class="btn btn-primary w-100">
+            Filter
+        </button>
+    </div>
+
+</form>
 
 @if (TempData["Error"] != null)
 {
@@ -30,6 +80,8 @@ else
                 <th>Venue</th>
                 <th>Event</th>
                 <th>Actions</th>
+                <th>Event Type</th>
+                <th>Venue Available</th>
             </tr>
         </thead>
         <tbody>
@@ -44,6 +96,9 @@ else
                         <a asp-action="Details" asp-route-id="@booking.BookingId" class="btn btn-sm btn-outline-info me-1">Details</a>
                         <a asp-action="Delete" asp-route-id="@booking.BookingId" class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
+                    <td>@booking.EventTypeName</td>
+                    <td>@(booking.VenueAvailable ? "Yes" : "No")</td>
+                    
                 </tr>
             }
         </tbody>

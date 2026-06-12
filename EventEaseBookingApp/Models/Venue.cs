@@ -9,7 +9,8 @@ namespace EventEaseBookingApp.Models
         [Key]
         public int VenueId { get; set; }
 
-        [Required]
+
+    [Required]
         [Display(Name = "Venue Name")]
         public string VenueName { get; set; } = string.Empty;
 
@@ -22,8 +23,14 @@ namespace EventEaseBookingApp.Models
         [Display(Name = "Image URL")]
         public string? ImageUrl { get; set; }
 
+        // NEW AVAILABILITY FIELD
+        [Display(Name = "Venue Available")]
+        public bool IsAvailable { get; set; } = true;
+
         // Navigation Property
         [JsonIgnore]
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
     }
+
+
 }
