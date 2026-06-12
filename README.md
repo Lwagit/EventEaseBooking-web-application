@@ -69,3 +69,25 @@ The application can be deployed using cloud platforms such as Microsoft Azure. U
 
 ---
 
+## Part 3 – Advanced Filtering
+
+### New Features Added
+
+- Filter bookings by Event Type
+- Filter venues by availability
+- Dynamic filtering through the Bookings page
+- EventType database entity added
+- Entity Framework migration added
+
+### Technologies Used
+
+- ASP.NET Core MVC
+- Entity Framework Core
+- SQL Server
+- Azure SQL Database (project design)
+- Azure App Service (planned deployment)
+- GitHub
+
+### Repository
+
+https://github.com/Lwagit/EventEaseBooking-web-application
